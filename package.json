@@ -1,0 +1,16 @@
+{
+	"name": "mern-project",
+	"version": "1.0.0",
+	"description": "Mern project",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server/server.js"
+	},
+	"author": "Oscar Rainergren",
+	"license": "MIT",
+	"dependencies": {
+		"dotenv": "^16.0.0",
+		"express": "^4.17.3",
+		"mongoose": "^6.3.0"
+	}
+}
