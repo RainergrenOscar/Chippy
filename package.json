@@ -4,13 +4,18 @@
 	"description": "Mern project",
 	"main": "server.js",
 	"scripts": {
-		"start": "node server/server.js"
+		"start": "node server/server.js",
+		"server": "nodemon server/server.js"
 	},
 	"author": "Oscar Rainergren",
 	"license": "MIT",
 	"dependencies": {
+		"bcryptjs": "^2.4.3",
 		"dotenv": "^16.0.0",
 		"express": "^4.17.3",
-		"mongoose": "^6.3.0"
+		"express-async-handler": "^1.2.0",
+		"mongodb": "^4.5.0",
+		"mongoose": "^6.3.0",
+		"nodemon": "^2.0.15"
 	}
 }
