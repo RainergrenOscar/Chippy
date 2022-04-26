@@ -1,0 +1,116 @@
+@import "../../styles/Variables.scss";
+
+section {
+	height: 100vh;
+	background-color: white;
+	overflow: hidden;
+	.split {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		@media screen and(max-width: 1100px) {
+			grid-template-columns: 1fr;
+			height: 100%;
+		}
+		&_left {
+			display: flex;
+			justify-content: center;
+			font-family: $font-main;
+			align-items: center;
+
+			&_container {
+				margin: 0 4rem;
+				text-align: center;
+
+				img {
+					width: 100px;
+				}
+				h1 {
+					font-size: 2.5rem;
+					margin-top: 1rem;
+					letter-spacing: -2px;
+					color: $font-black;
+					margin-bottom: 5rem;
+				}
+				.form_group {
+					margin: 1.5rem 0;
+					input {
+						width: 350px;
+						height: 2rem;
+						border: none;
+						border-bottom: 1px solid $font-grey;
+						transition: 0.5s border-bottom ease;
+						color: $font-black;
+						&:focus {
+							outline: none;
+							border-bottom: 1px solid $blue;
+						}
+					}
+					button {
+						width: 100%;
+						height: 2.5rem;
+						border: none;
+						margin-top: 1.5rem;
+						background-color: $blue;
+						border-radius: 5px;
+						cursor: pointer;
+						color: white;
+						transition: transform 0.2s ease;
+						&:hover {
+							transform: translateY(-0.3rem);
+						}
+					}
+					p {
+						font-size: 0.8rem;
+						color: $font-black;
+						font-weight: 500;
+
+						span {
+							color: $blue;
+						}
+					}
+				}
+			}
+		}
+		&_right {
+			background-color: $blue;
+			height: 100vh;
+			color: white;
+			display: flex;
+			justify-content: center;
+			font-family: $font-main;
+			@media screen and(max-width: 1100px) {
+				display: none;
+			}
+			&_container {
+				margin: 0rem 3rem 0 3rem;
+
+				&_split {
+					margin-top: 3rem;
+					font-weight: 500;
+					font-size: 1.1rem;
+					display: flex;
+					justify-content: space-between;
+				}
+				&_quote {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					height: 80vh;
+					h1 {
+						font-size: 5rem;
+
+						width: 500px;
+						line-height: 100px;
+						letter-spacing: -6px;
+						font-weight: 600;
+					}
+					h3 {
+						margin: 3rem 0;
+						font-size: 1.8rem;
+						font-weight: 500;
+					}
+				}
+			}
+		}
+	}
+}

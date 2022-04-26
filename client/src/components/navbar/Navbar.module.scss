@@ -1,0 +1,19 @@
+@import "../../styles/Variables.scss";
+
+.navbar_container {
+	height: 80px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	&_logo {
+		margin-right: 2rem;
+		margin-left: 5rem;
+	}
+	&_links {
+		display: flex;
+		gap: 2rem;
+		font-family: $font-second;
+		letter-spacing: -1px;
+		color: $font-grey;
+	}
+}
