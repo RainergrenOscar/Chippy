@@ -1,9 +1,64 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import login from "../login/Login.module.scss"
 import logo from "../../images/logo-blue.svg"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
+
+// Redux
+import { useSelector, useDispatch } from "react-redux"
+import { loginUser, reset } from "../../redux/auth/authSlice"
 
 const Login = () => {
+	const navigate = useNavigate()
+	// useState hook with the values from the form
+	const [signupForm, setSignupForm] = useState({
+		email: "",
+		password: "",
+	})
+	// Destructure form
+	const { email, password } = signupForm
+
+	// Redux dispatch initalize so we can call it
+	const dispatch = useDispatch()
+
+	//Extract data from the Redux store state
+	const { user, isLoading, isSuccess, message, isError } = useSelector(
+		(state) => state.auth
+	)
+
+	//Login user and catch errors
+	useEffect(() => {
+		// If there is an error send a toast with the error message
+		if (isError) {
+			toast.error(message)
+		}
+		// Redirect user if success
+		if (isSuccess || user) {
+			navigate("/")
+		}
+
+		dispatch(reset())
+	}, [isSuccess, user, navigate, dispatch, isError])
+
+	//Function that sets the signupForm state to the value of the input
+	const onChange = (e) => {
+		setSignupForm((prevState) => ({
+			...prevState,
+			[e.target.name]: e.target.value,
+		}))
+	}
+
+	const submitForm = (e) => {
+		e.preventDefault()
+
+		// deconstruct user and dispatch loginUser with the userData values.
+		const userData = {
+			email,
+			password,
+		}
+		dispatch(loginUser(userData))
+	}
+
 	return (
 		<section>
 			<div className={login.split}>
@@ -30,14 +85,17 @@ const Login = () => {
 					<div className={login.split_left_container}>
 						<img src={logo} alt='' />
 						<h1>Welcome back!</h1>
-						<form>
+						<form onSubmit={submitForm}>
 							<div className={login.form_group}>
 								<input
 									type='text'
 									className='form-control'
-									id='name'
-									name='name'
-									placeholder='Name'
+									id='email'
+									name='email'
+									value={email}
+									placeholder='Email'
+									onChange={onChange}
+									required
 								/>
 							</div>
 							<div className={login.form_group}>
@@ -46,10 +104,12 @@ const Login = () => {
 									className='form-control'
 									id='password'
 									name='password'
+									value={password}
 									placeholder='Password'
+									onChange={onChange}
+									required
 								/>
 							</div>
-
 							<div className={login.form_group}>
 								<button>SIGN UP</button>
 							</div>

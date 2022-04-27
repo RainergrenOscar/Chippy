@@ -1,8 +1,74 @@
 import signup from "../signup/Signup.module.scss"
 import logo from "../../images/logo-red.svg"
+import { toast } from "react-toastify"
 import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+
+// Redux
+import { useSelector, useDispatch } from "react-redux"
+import { signupUser, reset } from "../../redux/auth/authSlice"
 
 const Signup = () => {
+	const navigate = useNavigate()
+
+	// useState hook with the values from the form
+	const [signupForm, setSignupForm] = useState({
+		name: "",
+		email: "",
+		password: "",
+		password2: "",
+	})
+
+	// Redux dispatch initalize so we can call it
+	const dispatch = useDispatch()
+
+	//Extract data from the Redux store state
+	const { user, isLoading, isSuccess, message, isError } = useSelector(
+		(state) => state.auth
+	)
+	// Destructure form
+	const { name, email, password, password2 } = signupForm
+
+	useEffect(() => {
+		// If there is an error send a toast with the error message
+		if (isError) {
+			toast.error(message)
+		}
+		// Redirect user if success
+		if (isSuccess || user) {
+			setTimeout(() => {
+				navigate("/")
+			}, 1500)
+		}
+
+		dispatch(reset())
+	}, [isSuccess, user, navigate, dispatch, isError])
+
+	//Function that sets the signupForm state to the value of the input
+	const onChange = (e) => {
+		setSignupForm((prevState) => ({
+			...prevState,
+			[e.target.name]: e.target.value,
+		}))
+	}
+	// Function for submiting the form with data
+	const submitForm = (e) => {
+		e.preventDefault()
+		if (password !== password2) {
+			toast.error("Password do not match")
+		} else {
+			// If password matches, create variable called userData and pass in the values from the input fields
+			const userData = {
+				name,
+				email,
+				password,
+			}
+			// Dispatch the redux register function with the userData value
+			dispatch(signupUser(userData))
+		}
+	}
+
 	return (
 		<section>
 			<div className={signup.split}>
@@ -10,14 +76,17 @@ const Signup = () => {
 					<div className={signup.split_left_container}>
 						<img src={logo} alt='' />
 						<h1>Create Account</h1>
-						<form>
+						<form onSubmit={submitForm}>
 							<div className={signup.form_group}>
 								<input
 									type='text'
 									className='form-control'
 									id='name'
 									name='name'
+									value={name}
 									placeholder='Name'
+									onChange={onChange}
+									required
 								/>
 							</div>
 							<div className={signup.form_group}>
@@ -26,7 +95,10 @@ const Signup = () => {
 									className='form-control'
 									id='email'
 									name='email'
+									value={email}
 									placeholder='Email'
+									onChange={onChange}
+									required
 								/>
 							</div>
 							<div className={signup.form_group}>
@@ -35,7 +107,10 @@ const Signup = () => {
 									className='form-control'
 									id='password'
 									name='password'
+									value={password}
 									placeholder='Password'
+									onChange={onChange}
+									required
 								/>
 							</div>
 							<div className={signup.form_group}>
@@ -44,7 +119,10 @@ const Signup = () => {
 									className='form-control'
 									id='password2'
 									name='password2'
+									value={password2}
 									placeholder='Confirm password'
+									onChange={onChange}
+									required
 								/>
 							</div>
 							<div className={signup.form_group}>
