@@ -3,7 +3,7 @@ import axios from "axios"
 // url endpoint for the auth
 const url = "/api/users"
 
-// register user
+// Register user
 const signupUser = async (userData) => {
 	// Send HTTP post request using axios to the backend
 	const response = await axios.post(url, userData)
@@ -21,7 +21,7 @@ const loginUser = async (userData) => {
 	// Send HTTP post request using axios to the backend
 	const response = await axios.post(`${url}/login`, userData)
 
-	// If we got a response we set it to localstorage
+	// If we got a response we set the user to localstorage
 	if (response.data) {
 		localStorage.setItem("user", JSON.stringify(response.data))
 	}

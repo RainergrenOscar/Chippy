@@ -37,9 +37,7 @@ const Signup = () => {
 		}
 		// Redirect user if success
 		if (isSuccess || user) {
-			setTimeout(() => {
-				navigate("/")
-			}, 1500)
+			navigate("/")
 		}
 
 		dispatch(reset())

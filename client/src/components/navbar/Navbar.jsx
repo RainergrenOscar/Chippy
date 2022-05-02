@@ -24,23 +24,6 @@ const Navbar = () => {
 					<img src={logo} alt='' />
 				</Link>
 			</div>
-
-			<div className={style.navbar_container_links}>
-				<ul>
-					<li>Popular</li>
-				</ul>
-				<ul>
-					<li>Liked quotes</li>
-				</ul>
-				<ul>
-					<li>Editor</li>
-				</ul>
-				<ul>
-					<li>
-						<button onClick={onLogout}>Sign out</button>
-					</li>
-				</ul>
-			</div>
 		</nav>
 	)
 }
