@@ -7,7 +7,7 @@ const {
 	getMe,
 } = require("../controllers/userController")
 
-//Routes
+//Routes Login
 //Create new user
 router.post("/", registerUser)
 //Login user

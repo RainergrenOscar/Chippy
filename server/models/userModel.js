@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-// Create user model for Mongo Database and pass in all fields
+// Create schema and model
 const userSchema = mongoose.Schema(
 	{
 		name: {
@@ -24,7 +24,7 @@ const userSchema = mongoose.Schema(
 		},
 	},
 	{
-		// Added timestamps so we can see time when we post the post.
+		// Added timestamps so we can see time when user logs in
 		timestamps: true,
 	}
 )

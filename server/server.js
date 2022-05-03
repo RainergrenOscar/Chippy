@@ -13,6 +13,7 @@ app.use(express.urlencoded({ extended: false }))
 
 //Routes
 app.use("/api/users", require("./routes/userRoutes"))
+app.use("/api/quotes", require("./routes/quoteRoutes"))
 
 //Start server on port from .env else start on port 8000
 const PORT = process.env.PORT || 5000
