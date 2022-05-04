@@ -18,7 +18,7 @@ const signupUser = async (userData) => {
 
 // Login user
 const loginUser = async (userData) => {
-	// Send HTTP post request using axios to the backend
+	// Send HTTP post request to the backend
 	const response = await axios.post(`${url}/login`, userData)
 
 	// If we got a response we set the user to localstorage

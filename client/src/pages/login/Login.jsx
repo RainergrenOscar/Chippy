@@ -111,7 +111,7 @@ const Login = () => {
 								/>
 							</div>
 							<div className={login.form_group}>
-								<button>SIGN UP</button>
+								<button>LOGIN</button>
 							</div>
 							<div className={login.form_group}>
 								<p>

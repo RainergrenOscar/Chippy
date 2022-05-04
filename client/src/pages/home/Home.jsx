@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import style from "./Home.module.scss"
 
 const Home = () => {
 	const navigate = useNavigate()
@@ -12,7 +13,11 @@ const Home = () => {
 			navigate("/login")
 		}
 	}, [])
-	return <div>Home</div>
+	return (
+		<section className={style.header}>
+			<div>Home</div>
+		</section>
+	)
 }
 
 export default Home

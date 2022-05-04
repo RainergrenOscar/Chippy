@@ -1,20 +1,102 @@
 @import "../../styles/Variables.scss";
 
-.navbar_container {
-	height: 80px;
-	width: 100%;
+.navbar {
+	font-family: $font-main;
+	width: 240px;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
 	display: flex;
-	align-items: center;
-	&_logo {
-		margin-right: 2rem;
-		margin-left: 5rem;
+	background-color: #ffffff;
+	border-right: 2px solid #f7f9fa;
+
+	@media screen and(max-height: 650px) {
+		overflow-y: scroll;
 	}
-	&_links {
-		display: flex;
-		width: 100vw;
-		gap: 2rem;
-		font-family: $font-second;
-		letter-spacing: -1px;
-		color: $font-grey;
+	&_container {
+		width: 100%;
+		&_logo {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 5rem;
+			margin-top: 2rem;
+			h1 {
+				font-weight: 600;
+				color: $blue;
+				padding-left: 5px;
+				font-size: 18px;
+				letter-spacing: -1.5px;
+			}
+		}
+		&_links {
+			padding-top: 0.5rem;
+			height: 80%;
+			display: flex;
+			flex-direction: column;
+
+			h1 {
+				padding-bottom: 2rem;
+				font-weight: 600;
+				color: $font-black;
+				margin-left: 2rem;
+			}
+
+			&_item {
+				margin-left: 2rem;
+				margin-bottom: 4rem;
+
+				li {
+					margin-bottom: 2.5rem;
+				}
+
+				a {
+					list-style: none;
+					text-decoration: none;
+					font-size: 20px;
+					color: $font-black;
+				}
+				span {
+					margin-left: 18px;
+					text-align: center;
+					color: $font-black;
+					position: relative;
+					top: -3px;
+					font-size: 16px;
+					font-weight: 400;
+				}
+			}
+			&_bottom {
+				display: flex;
+				flex-direction: column;
+				color: $font-grey;
+				margin-top: auto;
+				margin-bottom: 3rem;
+
+				p {
+					font-size: 14px;
+					font-weight: 300;
+					margin-left: 2rem;
+				}
+				span {
+					font-weight: 600;
+					letter-spacing: -1px;
+					margin-left: 2rem;
+					margin-bottom: 0.5rem;
+				}
+				button {
+					border: none;
+					width: 190px;
+					background-color: $blue;
+					color: #ffffff;
+					height: 40px;
+					border-radius: 20px;
+					font-weight: 500;
+					margin: auto;
+					cursor: pointer;
+				}
+			}
+		}
 	}
 }

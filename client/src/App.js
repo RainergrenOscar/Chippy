@@ -17,6 +17,7 @@ import Navbar from "./components/navbar/Navbar"
 import { Provider } from "react-redux"
 
 import store from "./store"
+import Layout from "./pages/layout/Layout"
 
 function App() {
 	return (
@@ -28,8 +29,9 @@ function App() {
 							path='/'
 							element={
 								<>
-									<Navbar />
-									<Home />
+									<Layout>
+										<Home />
+									</Layout>
 								</>
 							}
 						/>
