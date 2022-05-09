@@ -4,7 +4,7 @@ import logo from "../../images/logo-blue.svg"
 import { Link, NavLink, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { logoutUser, reset } from "../../redux/auth/authSlice"
-import { BsHouse } from "react-icons/bs"
+import { BsHouse, BsHeart, BsFileEarmark } from "react-icons/bs"
 
 const Navbar = () => {
 	const navigate = useNavigate()
@@ -22,7 +22,7 @@ const Navbar = () => {
 		<nav className={style.navbar}>
 			<div className={style.navbar_container}>
 				<div className={style.navbar_container_logo}>
-					<img src={logo} alt='' style={{ width: "45px" }} />
+					<img src={logo} alt='' style={{ width: "40px" }} />
 					<h1>chippy.</h1>
 				</div>
 				<nav className={style.navbar_container_links}>
@@ -36,20 +36,14 @@ const Navbar = () => {
 						</li>
 						<li>
 							<Link to='/'>
-								<BsHouse />
-								<span>Dashboard</span>
+								<BsHeart />
+								<span>Liked quotes</span>
 							</Link>
 						</li>
 						<li>
 							<Link to='/'>
-								<BsHouse />
-								<span>Dashboard</span>
-							</Link>
-						</li>
-						<li>
-							<Link to='/'>
-								<BsHouse />
-								<span>Dashboard</span>
+								<BsFileEarmark />
+								<span>My posts</span>
 							</Link>
 						</li>
 					</ul>

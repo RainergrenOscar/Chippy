@@ -3,10 +3,12 @@ const mongoose = require("mongoose")
 // Create schema and model with relation to the userSchema
 const quoteSchema = mongoose.Schema({
 	user: {
-		type: mongoose.Schema.Types.ObjectId,
-		required: true,
+		//Relational data from "User" model
+		name: String,
+		id: mongoose.Schema.Types.ObjectId,
 		// Refering to the "User" collection we created for login
-		ref: "User",
+		// ref: "User",
+		// required: true,
 	},
 	quote: {
 		type: String,

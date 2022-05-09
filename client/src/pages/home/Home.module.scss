@@ -1,1 +1,99 @@
+@import "../../styles/Variables.scss";
 
+.container {
+	height: auto;
+	max-width: 780px;
+	width: auto;
+
+	.header {
+		height: 58px;
+		width: 100%;
+		border-bottom: 2px solid #f7f9fa;
+		display: flex;
+		align-items: center;
+		h1 {
+			font-family: $font-main;
+			font-size: 18px;
+			letter-spacing: -1px;
+			font-weight: 600;
+			color: $font-black;
+			padding-left: 1rem;
+		}
+	}
+	.form {
+		height: 110px;
+		border-bottom: 2px solid #f7f9fa;
+		padding-bottom: 1rem;
+
+		.grid {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+
+			.form_group {
+				margin-left: 1rem;
+
+				textarea {
+					border: none;
+					padding-top: 1.5rem;
+					margin-right: 2rem;
+					width: 450px;
+					resize: none;
+					height: 50px;
+					font-family: $font-main;
+					font-size: 16px;
+					color: $font-grey;
+
+					&:focus {
+						outline: none;
+					}
+				}
+				input {
+					border: none;
+					margin-right: 2rem;
+					width: 450px;
+					height: 20px;
+					font-family: $font-main;
+					font-size: 14px;
+					color: $font-grey;
+
+					&:focus {
+						outline: none;
+					}
+				}
+				input,
+				textarea {
+					@media screen and (max-width: $md) {
+						width: auto;
+					}
+				}
+				button {
+					border: none;
+
+					background-color: $blue;
+					color: white;
+					height: 40px;
+					width: 85px;
+					border-radius: 20px;
+					font-family: $font-main;
+					font-weight: 500;
+					font-size: 14px;
+					cursor: pointer;
+					margin-right: 1rem;
+					transition: transform 0.2s ease;
+					&:hover {
+						transform: translateY(-0.2rem);
+					}
+				}
+			}
+		}
+	}
+	.card_grid {
+		height: auto;
+		display: flex;
+		flex-wrap: wrap;
+		@media screen and (max-width: $sm) {
+			justify-content: center;
+		}
+	}
+}
