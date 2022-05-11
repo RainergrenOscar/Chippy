@@ -18,26 +18,50 @@ import { Provider } from "react-redux"
 
 import store from "./store"
 import Layout from "./pages/layout/Layout"
+import Myposts from "./pages/myposts/Myposts"
+import Profile from "./pages/profile/Profile"
 
 function App() {
 	return (
 		<>
 			<Provider store={store}>
 				<Router>
-					<Routes>
-						<Route
-							path='/'
-							element={
-								<>
-									<Layout>
-										<Home />
-									</Layout>
-								</>
-							}
-						/>
-						<Route path='/login' element={<Login />} />
-						<Route path='/signup' element={<Signup />} />
-					</Routes>
+					<div className='test'>
+						<Routes>
+							<Route
+								path='/'
+								element={
+									<>
+										<Layout>
+											<Home />
+										</Layout>
+									</>
+								}
+							/>
+							<Route
+								path='/myposts'
+								element={
+									<>
+										<Layout>
+											<Myposts />
+										</Layout>
+									</>
+								}
+							/>
+							<Route
+								path='/profile'
+								element={
+									<>
+										<Layout>
+											<Profile />
+										</Layout>
+									</>
+								}
+							/>
+							<Route path='/login' element={<Login />} />
+							<Route path='/signup' element={<Signup />} />
+						</Routes>
+					</div>
 				</Router>
 				<ToastContainer />
 			</Provider>

@@ -3,14 +3,14 @@ import style from "./Card.module.scss"
 import logo from "../../images/logo-white.svg"
 import { BsFillPencilFill } from "react-icons/bs"
 import { AiFillDelete } from "react-icons/ai"
-import axios from "axios"
+
 import { useSelector, useDispatch } from "react-redux"
 import { deleteQuote } from "../../redux/quotes/quoteSlice"
-import { useNavigate } from "react-router-dom"
 
-const Card = ({ quote, user }) => {
+const Card = ({ quote, user, callBack }) => {
 	const dispatch = useDispatch()
-	const navigate = useNavigate()
+
+	// Function for deleting the quote if the quote is created by the logged in user
 	const { quotes, quoteId } = useSelector((state) => state.quotes)
 	const onDeleteUser = async (id) => {
 		if (window.confirm("Are you sure?")) {
@@ -18,6 +18,7 @@ const Card = ({ quote, user }) => {
 			window.location.reload(false)
 		}
 	}
+
 	return (
 		<div className={style.container}>
 			<div className={style.container_background}>
@@ -42,6 +43,7 @@ const Card = ({ quote, user }) => {
 					<h1>{quote.user.name}</h1>
 				</div>
 				<div className={style.container_likes_right}>
+					{/* If user is logged in show these compononets */}
 					{user && user.name === quote.user.name && (
 						<>
 							<div className={style.container_likes_right_like}>
@@ -49,6 +51,13 @@ const Card = ({ quote, user }) => {
 									{" "}
 									<BsFillPencilFill
 										className={style.pencil}
+										onClick={() =>
+											callBack(
+												quote.quote,
+												quote.author,
+												quote._id
+											)
+										}
 									/>
 								</button>
 							</div>

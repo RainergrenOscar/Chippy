@@ -2,7 +2,7 @@
 
 .container {
 	height: auto;
-	max-width: 780px;
+	max-width: 100%;
 	width: auto;
 
 	.header {
@@ -11,13 +11,52 @@
 		border-bottom: 2px solid #f7f9fa;
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
+		@media screen and (max-width: $sm) {
+			flex-direction: column;
+			height: auto;
+			margin: 1rem 0;
+			padding-bottom: 1rem;
+			align-items: baseline;
+		}
+		&_search {
+			background-color: rgb(237, 237, 237);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding-left: 1rem;
+			margin-right: 1rem;
+			border-radius: 20px;
+			color: $font-grey;
+			@media screen and (max-width: $sm) {
+				margin: auto;
+			}
+		}
+		input {
+			border: none;
+			background-color: rgb(237, 237, 237);
+			height: 2rem;
+			width: 330px;
+			border-radius: 20px;
+			padding-left: 1rem;
+			font-family: $font-main;
+			margin: auto;
+
+			&:focus {
+				outline: none;
+			}
+		}
 		h1 {
+			margin-right: auto;
 			font-family: $font-main;
 			font-size: 18px;
 			letter-spacing: -1px;
 			font-weight: 600;
 			color: $font-black;
 			padding-left: 1rem;
+			@media screen and (max-width: $sm) {
+				margin-bottom: 1rem;
+			}
 		}
 	}
 	.form {
@@ -37,7 +76,8 @@
 					border: none;
 					padding-top: 1.5rem;
 					margin-right: 2rem;
-					width: 450px;
+					width: 500px;
+
 					resize: none;
 					height: 50px;
 					font-family: $font-main;
@@ -51,8 +91,9 @@
 				input {
 					border: none;
 					margin-right: 2rem;
-					width: 450px;
+					width: 500px;
 					height: 20px;
+
 					font-family: $font-main;
 					font-size: 14px;
 					color: $font-grey;
@@ -92,8 +133,6 @@
 		height: auto;
 		display: flex;
 		flex-wrap: wrap;
-		@media screen and (max-width: $sm) {
-			justify-content: center;
-		}
+		justify-content: center;
 	}
 }

@@ -44,6 +44,7 @@
 			flex-direction: column;
 			justify-content: center;
 			height: 110px;
+			padding-right: 2px;
 
 			.overflow {
 				height: 100%;
@@ -54,6 +55,15 @@
 				letter-spacing: -2px;
 				font-size: 2rem;
 				font-weight: 400;
+				word-break: break-word;
+				&::-webkit-scrollbar {
+					background-color: $blue;
+					width: 13px;
+				}
+				&::-webkit-scrollbar-thumb {
+					background-color: rgb(255, 255, 255);
+					border-radius: 20px;
+				}
 			}
 			.line {
 				position: relative;

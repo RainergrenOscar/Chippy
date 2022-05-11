@@ -75,6 +75,31 @@ export const deleteQuote = createAsyncThunk(
 	}
 )
 
+//Update quote
+export const updateQuote = createAsyncThunk(
+	"quote/update",
+	async (updateData, thunkAPI) => {
+		try {
+			const token = thunkAPI.getState().auth.user.token
+			return await quoteService.updateQuote(
+				updateData.cardId,
+				token,
+				updateData
+			)
+		} catch (error) {
+			// set the message to the backend server message
+			const message =
+				(error.response &&
+					error.response.data &&
+					error.response.data.message) ||
+				error.message ||
+				error.toString()
+			//return with the message
+			return thunkAPI.rejectWithValue(message)
+		}
+	}
+)
+
 export const quoteSlice = createSlice({
 	name: "quote",
 	initialState,

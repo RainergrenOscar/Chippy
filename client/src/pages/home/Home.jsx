@@ -3,9 +3,15 @@ import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import style from "./Home.module.scss"
 import Card from "../../components/card/Card"
+import {
+	createQuote,
+	reset,
+	getQuotes,
+	updateQuote,
+} from "../../redux/quotes/quoteSlice"
+import { FiSearch } from "react-icons/fi"
 import { toast } from "react-toastify"
-import { createQuote, reset, getQuotes } from "../../redux/quotes/quoteSlice"
-import { useParams } from "react-router-dom"
+import axios from "axios"
 
 const Home = () => {
 	const navigate = useNavigate()
@@ -17,8 +23,10 @@ const Home = () => {
 		(state) => state.quotes
 	)
 
-	const [quote, seQuote] = useState("")
+	const [quote, setQuote] = useState("")
 	const [author, setAuthor] = useState("")
+	const [cardId, setCardId] = useState("")
+	const [search, setSearch] = useState("")
 
 	// Check if user is logged in, otherwise navigate back to login
 	useEffect(() => {
@@ -39,15 +47,51 @@ const Home = () => {
 		dispatch(reset)
 	}, [isError, isSuccess, dispatch, message])
 
+	// When the form is submitted
 	const submit = (e) => {
 		e.preventDefault()
-		dispatch(createQuote({ quote, author }))
-		window.location.reload(false)
+		if (!author || !quote) {
+			toast.error("All fields are required")
+		}
+		//Dispatch the createQuote Slice with the quote and quthor data.
+		else if (!cardId) {
+			dispatch(createQuote({ quote, author }))
+			window.location.reload(false)
+			//Dispatch the updateQuote with data
+		} else {
+			dispatch(updateQuote({ quote, author, cardId }))
+			window.location.reload(false)
+		}
 	}
+
+	// Searchbar
+	const filteredQuotes = quotes.filter((quote) => {
+		return (
+			quote.user.name.toLowerCase().includes(search.toLowerCase()) ||
+			quote.quote.toLowerCase().includes(search.toLowerCase())
+		)
+	})
+	//Callback function that sets the states to the updated data
+	//Only used when updating a card
+	const callBack = (quote, author, uuid) => {
+		window.scrollTo(0, 0)
+		setQuote(quote)
+		setAuthor(author)
+		setCardId(uuid)
+	}
+
 	return (
 		<section className={style.container}>
 			<div className={style.header}>
 				<h1>Home</h1>
+				<div className={style.header_search}>
+					<FiSearch />
+					<input
+						type='text'
+						placeholder='Search on Chippy'
+						onChange={(e) => setSearch(e.target.value)}
+					/>
+				</div>
 			</div>
 			<section className={style.form}>
 				<form onSubmit={submit}>
@@ -61,7 +105,7 @@ const Home = () => {
 									className='form-control'
 									placeholder='The difference between poor and rich, is money'
 									value={quote}
-									onChange={(e) => seQuote(e.target.value)}
+									onChange={(e) => setQuote(e.target.value)}
 								/>
 							</div>
 							<div className={style.form_group}>
@@ -86,8 +130,13 @@ const Home = () => {
 				</form>
 			</section>
 			<section className={style.card_grid}>
-				{quotes.map((quote) => (
-					<Card key={quote._id} quote={quote} user={user} />
+				{filteredQuotes.map((quote) => (
+					<Card
+						callBack={callBack}
+						key={quote._id}
+						quote={quote}
+						user={user}
+					/>
 				))}
 			</section>
 		</section>

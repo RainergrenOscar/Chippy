@@ -119,11 +119,6 @@ const updateQuote = asyncHandler(async (req, res) => {
 		throw new Error("Cant find the quote")
 	}
 
-	if (quote.user.toString() !== req.user.id) {
-		res.status(401)
-		throw new Error("YOU CANT DO THAT MY MAN")
-	}
-
 	const updatedQuote = await Quote.findByIdAndUpdate(req.params.id, req.body)
 
 	res.status(200).json(updatedQuote)

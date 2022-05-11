@@ -37,10 +37,23 @@ const deleteQuote = async (quoteId, token) => {
 	return response.data
 }
 
+// update quotes
+const updateQuote = async (quoteId, token, data) => {
+	const config = {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	}
+	const response = await axios.put(url + "/" + quoteId, data, config)
+
+	return response.data
+}
+
 const quoteService = {
 	createQuote,
 	getQuotes,
 	deleteQuote,
+	updateQuote,
 }
 
 export default quoteService
