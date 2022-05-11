@@ -26,6 +26,7 @@ const Card = ({ quote, user, callBack }) => {
 					<div className={style.container_split_left}>
 						<img src={logo} alt='' />
 					</div>
+
 					<div className={style.container_split_right}>
 						{new Date(quote.date).toLocaleString("en-US")}
 					</div>

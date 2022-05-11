@@ -1,1 +1,34 @@
 @import "../../styles/Variables.scss";
+
+.container {
+	height: auto;
+	max-width: 100%;
+	width: auto;
+	.header {
+		height: 58px;
+		width: 100%;
+		border-bottom: 2px solid #f7f9fa;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		@media screen and (max-width: $sm) {
+			flex-direction: column;
+			height: auto;
+			margin: 1rem 0;
+			padding-bottom: 1rem;
+			align-items: baseline;
+		}
+		h1 {
+			margin-right: auto;
+			font-family: $font-main;
+			font-size: 18px;
+			letter-spacing: -1px;
+			font-weight: 600;
+			color: $font-black;
+			padding-left: 1rem;
+			@media screen and (max-width: $sm) {
+				margin-bottom: 1rem;
+			}
+		}
+	}
+}

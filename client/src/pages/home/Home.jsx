@@ -11,7 +11,6 @@ import {
 } from "../../redux/quotes/quoteSlice"
 import { FiSearch } from "react-icons/fi"
 import { toast } from "react-toastify"
-import axios from "axios"
 
 const Home = () => {
 	const navigate = useNavigate()
@@ -103,7 +102,7 @@ const Home = () => {
 									name='quote'
 									id='quote'
 									className='form-control'
-									placeholder='The difference between poor and rich, is money'
+									placeholder='Knowing is better than learning'
 									value={quote}
 									onChange={(e) => setQuote(e.target.value)}
 								/>
@@ -114,7 +113,7 @@ const Home = () => {
 									name='author'
 									id='author'
 									className='form-control'
-									placeholder='Ben E. King'
+									placeholder='- Dj Khaled'
 									maxLength='25'
 									value={author}
 									onChange={(e) => setAuthor(e.target.value)}

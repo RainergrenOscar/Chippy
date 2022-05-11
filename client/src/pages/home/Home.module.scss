@@ -133,6 +133,8 @@
 		height: auto;
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
+		@media screen and (max-width: $md) {
+			justify-content: center;
+		}
 	}
 }
