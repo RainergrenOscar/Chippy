@@ -21,6 +21,7 @@ const protected = asyncHandler(async (req, res, next) => {
 			req.user = await User.findById(decoded.id).select("-password")
 
 			//Call next piece of middleware
+
 			next()
 		} catch (error) {
 			console.log(error)

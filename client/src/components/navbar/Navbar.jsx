@@ -32,19 +32,34 @@ const Navbar = () => {
 					<h1>Menu</h1>
 					<ul className={style.navbar_container_links_item}>
 						<li>
-							<NavLink to='/'>
+							<NavLink
+								to='/'
+								style={({ isActive }) => ({
+									color: isActive ? "#39a0ff" : "#3e4a6b",
+								})}
+							>
 								<BsHouse />
 								<span>Dashboard</span>
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to='/myposts'>
+							<NavLink
+								to='/myposts'
+								style={({ isActive }) => ({
+									color: isActive ? "#39a0ff" : "#3e4a6b",
+								})}
+							>
 								<BsFileEarmark />
 								<span>My posts</span>
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to='/profile'>
+							<NavLink
+								to='/profile'
+								style={({ isActive }) => ({
+									color: isActive ? "#39a0ff" : "#3e4a6b",
+								})}
+							>
 								<BsPerson />
 								<span>Profile</span>
 							</NavLink>

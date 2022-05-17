@@ -6,7 +6,6 @@ const quoteSchema = mongoose.Schema({
 		//Relational data from "User" model
 		name: String,
 		id: mongoose.Schema.Types.ObjectId,
-		// Refering to the "User" collection we created for login
 		// ref: "User",
 		// required: true,
 	},

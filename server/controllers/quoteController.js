@@ -3,10 +3,11 @@ const asyncHandler = require("express-async-handler")
 const User = require("../models/userModel")
 const Quote = require("../models/QuoteModel")
 
-// @desc get logged in users quotes
+// @desc get all quotes
 // @route GET /api/quotes
 // @access private
 const getQuote = asyncHandler(async (req, res) => {
+	//Fetch only logged in users quotes
 	//First get the user using jwt > id
 	// const user = await User.findById(req.user.id)
 
@@ -54,7 +55,7 @@ const createQuote = asyncHandler(async (req, res) => {
 	res.status(201).json(post)
 })
 
-// @desc Get specific quote
+// @desc Access specific quote
 // @route GET /api/quotes/:id
 // @access private
 const getSingleQuote = asyncHandler(async (req, res) => {

@@ -10,8 +10,10 @@ import { deleteQuote } from "../../redux/quotes/quoteSlice"
 const Card = ({ quote, user, callBack }) => {
 	const dispatch = useDispatch()
 
-	// Function for deleting the quote if the quote is created by the logged in user
+	//Access the redux qoute state
 	const { quotes, quoteId } = useSelector((state) => state.quotes)
+
+	// Delete function that only is available to logged in users with their posts
 	const onDeleteUser = async (id) => {
 		if (window.confirm("Are you sure?")) {
 			dispatch(deleteQuote(id))
