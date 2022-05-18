@@ -11,15 +11,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Login from "./pages/login/Login"
 import Home from "./pages/home/Home"
 import Signup from "./pages/signup/Signup"
-import Navbar from "./components/navbar/Navbar"
-
-// Redux
-import { Provider } from "react-redux"
-
-import store from "./store"
 import Layout from "./pages/layout/Layout"
 import Myposts from "./pages/myposts/Myposts"
 import Profile from "./pages/profile/Profile"
+
+// Redux
+import { Provider } from "react-redux"
+import store from "./store"
 
 function App() {
 	return (

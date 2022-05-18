@@ -11,6 +11,7 @@ import {
 } from "../../redux/quotes/quoteSlice"
 import { FiSearch } from "react-icons/fi"
 import { toast } from "react-toastify"
+import Modal from "../../components/modal/Modal"
 
 const Home = () => {
 	const navigate = useNavigate()
@@ -46,7 +47,7 @@ const Home = () => {
 		dispatch(reset)
 	}, [isError, isSuccess, dispatch, message])
 
-	// When the form is submitted
+	// Function for submitting the form
 	const submit = (e) => {
 		e.preventDefault()
 		if (!author || !quote) {
@@ -56,7 +57,7 @@ const Home = () => {
 		else if (!cardId) {
 			dispatch(createQuote({ quote, author }))
 			window.location.reload(false)
-			//Dispatch the updateQuote with data
+			//Dispatch the updateQuote with the updated data
 		} else {
 			dispatch(updateQuote({ quote, author, cardId }))
 			window.location.reload(false)
@@ -67,10 +68,11 @@ const Home = () => {
 	const filteredQuotes = quotes.filter((quote) => {
 		return (
 			quote.user.name.toLowerCase().includes(search.toLowerCase()) ||
-			quote.quote.toLowerCase().includes(search.toLowerCase())
+			quote.quote.toLowerCase().includes(search.toLowerCase()) ||
+			quote.author.toLowerCase().includes(search.toLowerCase())
 		)
 	})
-	//Callback function that sets the states to the updated data
+	//Function that sets the states to the updated data
 	//Only used when updating a card
 	const callBack = (quote, author, uuid) => {
 		window.scrollTo(0, 0)

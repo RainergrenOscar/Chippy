@@ -1,7 +1,7 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import style from "./Card.module.scss"
 import logo from "../../images/logo-white.svg"
-import { BsFillPencilFill } from "react-icons/bs"
+import { BsFillPencilFill, BsFillHeartFill } from "react-icons/bs"
 import { AiFillDelete } from "react-icons/ai"
 
 import { useSelector, useDispatch } from "react-redux"
@@ -9,9 +9,7 @@ import { deleteQuote } from "../../redux/quotes/quoteSlice"
 
 const Card = ({ quote, user, callBack }) => {
 	const dispatch = useDispatch()
-
-	//Access the redux qoute state
-	const { quotes, quoteId } = useSelector((state) => state.quotes)
+	const [isLiked, setIsLiked] = useState("false")
 
 	// Delete function that only is available to logged in users with their posts
 	const onDeleteUser = async (id) => {
@@ -19,6 +17,12 @@ const Card = ({ quote, user, callBack }) => {
 			dispatch(deleteQuote(id))
 			window.location.reload(false)
 		}
+	}
+
+	// Function that lets you like post
+	// Not functional only for display for the moment....
+	const likeUser = () => {
+		setIsLiked(!isLiked)
 	}
 
 	return (
@@ -46,8 +50,8 @@ const Card = ({ quote, user, callBack }) => {
 					<h1>{quote.user.name}</h1>
 				</div>
 				<div className={style.container_likes_right}>
-					{/* If user is logged in show these compononets */}
-					{user && user.name === quote.user.name && (
+					{/* If user is logged in show the alternatives to remove posts and update */}
+					{user && user.name === quote.user.name ? (
 						<>
 							<div className={style.container_likes_right_like}>
 								<button>
@@ -68,6 +72,26 @@ const Card = ({ quote, user, callBack }) => {
 								<button onClick={() => onDeleteUser(quote._id)}>
 									<AiFillDelete className={style.delete} />
 								</button>
+							</div>
+						</>
+					) : (
+						// If its not the logged in users post, show option to like the post
+						<>
+							<div className={style.container_likes_right_like}>
+								<button onClick={likeUser}>
+									<BsFillHeartFill
+										className={
+											isLiked ? style.heart : style.heart2
+										}
+									/>
+								</button>
+								<p
+									className={
+										isLiked ? style.heart : style.heart2
+									}
+								>
+									128
+								</p>
 							</div>
 						</>
 					)}

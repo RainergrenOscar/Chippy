@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 
+// Custom hook that checks if user is logged in
 export const useAuth = () => {
 	const [loggedIn, setLoggedIn] = useState(false)
 	const [loading, setLoading] = useState(true)

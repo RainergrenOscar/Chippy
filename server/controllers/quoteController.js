@@ -7,7 +7,6 @@ const Quote = require("../models/QuoteModel")
 // @route GET /api/quotes
 // @access private
 const getQuote = asyncHandler(async (req, res) => {
-	//Fetch only logged in users quotes
 	//First get the user using jwt > id
 	// const user = await User.findById(req.user.id)
 

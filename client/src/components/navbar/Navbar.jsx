@@ -10,8 +10,10 @@ const Navbar = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
+	// Takes user from the authSlice
 	const { user } = useSelector((state) => state.auth)
 
+	// Function that logs the user out on click
 	const onLogout = () => {
 		dispatch(logoutUser())
 		dispatch(reset())
