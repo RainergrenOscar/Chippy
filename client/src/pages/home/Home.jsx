@@ -23,6 +23,7 @@ const Home = () => {
 		(state) => state.quotes
 	)
 
+	//All states
 	const [quote, setQuote] = useState("")
 	const [author, setAuthor] = useState("")
 	const [cardId, setCardId] = useState("")

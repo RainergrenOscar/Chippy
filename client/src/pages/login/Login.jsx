@@ -48,6 +48,7 @@ const Login = () => {
 		}))
 	}
 
+	// Function that submits the form
 	const submitForm = (e) => {
 		e.preventDefault()
 

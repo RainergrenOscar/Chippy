@@ -2,7 +2,7 @@ import Navbar from "../../components/navbar/Navbar"
 
 import style from "./Layout.module.scss"
 
-//Makes the sidebar not overlapping the page
+//Layout that makes the sidebar responsive for all pages that is wrapped in Layout
 const Layout = ({ children }) => {
 	return (
 		<>
