@@ -40,7 +40,12 @@ const Login = () => {
 		dispatch(reset())
 	}, [isSuccess, user, navigate, dispatch, isError])
 
-	//Function that sets the signupForm state to the value of the input
+	/**
+	 * onChange function
+	 * @param {String} e
+	 * @returns updated state "signupForm"
+	 * Takes in all the inputs from the form and updates the state to what the user has typed
+	 */
 	const onChange = (e) => {
 		setSignupForm((prevState) => ({
 			...prevState,
@@ -48,11 +53,15 @@ const Login = () => {
 		}))
 	}
 
-	// Function that submits the form
+	/**
+	 * submitForm function
+	 * @param {String} e
+	 * @returns UserData object
+	 */
 	const submitForm = (e) => {
 		e.preventDefault()
 
-		// deconstruct user and dispatch loginUser with the userData values.
+		// Deconstruct user and dispatch loginUser with the userData values.
 		const userData = {
 			email,
 			password,

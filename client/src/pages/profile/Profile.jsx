@@ -13,23 +13,28 @@ const Profile = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
-	// Checks if user is logged in otherwise navigates to login page
+	/**
+	 * Checks if user is logged in otherwise navigates to login page
+	 */
 	useEffect(() => {
 		if (!user) {
 			navigate("/login")
 		}
 	}, [])
 
-	// Function that logs out the user
+	/**
+	 * Logout function
+	 * Logs the user out and resets the current redux auth state
+	 */
 	const onLogout = () => {
 		dispatch(logoutUser())
 		dispatch(reset())
 		navigate("/login")
 	}
 
-	// Only for showing a message that this feature is not available
+	// Only for showing a message
 	const notDone = () => {
-		toast.error("This feature is not available right now")
+		toast.error("This feature will be available soon")
 	}
 
 	return (

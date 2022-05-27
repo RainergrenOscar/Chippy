@@ -13,7 +13,11 @@ const Card = ({ quote, user, callBack }) => {
 	//Access the redux qoute state
 	const { quotes, quoteId } = useSelector((state) => state.quotes)
 
-	// Delete function that only is available to logged in users with their posts
+	/**
+	 * @async
+	 * @param {String} id
+	 * @returns Deletes a object with the same "id"
+	 */
 	const onDeleteUser = async (id) => {
 		if (window.confirm("Are you sure?")) {
 			dispatch(deleteQuote(id))

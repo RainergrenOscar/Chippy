@@ -30,6 +30,9 @@ const Signup = () => {
 	// Destructure form
 	const { name, email, password, password2 } = signupForm
 
+	/**
+	 * Checks if there is any error or if the register is successfull.
+	 */
 	useEffect(() => {
 		// If there is an error send a toast with the error message
 		if (isError) {
@@ -43,14 +46,23 @@ const Signup = () => {
 		dispatch(reset())
 	}, [isSuccess, user, navigate, dispatch, isError])
 
-	//Function that sets the signupForm state to the value of the input
+	/**
+	 * onChange function
+	 * @param {String} e
+	 * @returns updated state "signupForm"
+	 * Takes in all the inputs from the form and updates the state to what the user has typed
+	 */
 	const onChange = (e) => {
 		setSignupForm((prevState) => ({
 			...prevState,
 			[e.target.name]: e.target.value,
 		}))
 	}
-	// Function for submiting the form with data
+	/**
+	 * submitForm function
+	 * @param {String} e
+	 * @returns UserData object
+	 */
 	const submitForm = (e) => {
 		e.preventDefault()
 		if (password !== password2) {

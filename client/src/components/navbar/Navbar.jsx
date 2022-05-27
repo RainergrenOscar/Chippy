@@ -13,7 +13,10 @@ const Navbar = () => {
 	// Takes user from the authSlice
 	const { user } = useSelector((state) => state.auth)
 
-	// Function that logs the user out on click
+	/**
+	 * Log out function
+	 * @returns Logs the user out by dispatching the redux slice
+	 */
 	const onLogout = () => {
 		dispatch(logoutUser())
 		dispatch(reset())

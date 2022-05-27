@@ -2,6 +2,7 @@ import style from "./Modal.module.scss"
 import meme from "../../images/logout.jpeg"
 
 const Modal = () => {
+	/*THIS COMPONENT IS NOT BEING USED */
 	return (
 		<div className={style.modal}>
 			<div className={style.modal_content}>

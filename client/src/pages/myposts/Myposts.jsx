@@ -28,7 +28,11 @@ const Home = () => {
 	const [cardId, setCardId] = useState("")
 	const [search, setSearch] = useState("")
 
-	// Check if user is logged in, otherwise navigate back to login
+	/**
+	 * Checks if user us logged in on first render
+	 * @returns if user is not logged in, redirect to login page
+	 * @returns if user is logged in, dispatch getQuotes to show all current posts
+	 */
 	useEffect(() => {
 		if (!user) {
 			navigate("/login")
@@ -37,6 +41,11 @@ const Home = () => {
 		}
 	}, [dispatch])
 
+	/**
+	 * Checks if there is any error or succes on render
+	 * If its succesfull dispatch reset that resets the redux state
+	 * If its error, send error message to user
+	 */
 	useEffect(() => {
 		if (isError) {
 			toast.error(message)
@@ -47,7 +56,10 @@ const Home = () => {
 		dispatch(reset)
 	}, [isError, isSuccess, dispatch, message])
 
-	// Function for submitting the form
+	/**
+	 * Submit function
+	 * @param {String} e
+	 */
 	const submit = (e) => {
 		e.preventDefault()
 		if (!author || !quote) {
@@ -72,8 +84,13 @@ const Home = () => {
 			quote.author.toLowerCase().includes(search.toLowerCase())
 		)
 	})
-	//Function that sets the states to the updated data
-	//Only used when updating a card
+	/**
+	 * Callback function
+	 * @param {String} quote
+	 * @param {String} author
+	 * @param {String} uuid
+	 * @returns updated redux state and card
+	 */
 	const callBack = (quote, author, uuid) => {
 		window.scrollTo(0, 0)
 		setQuote(quote)

@@ -11,7 +11,11 @@ const Card = ({ quote, user, callBack }) => {
 	const dispatch = useDispatch()
 	const [isLiked, setIsLiked] = useState("false")
 
-	// Delete function that only is available to logged in users with their posts
+	/**
+	 * @async
+	 * @param {String} id
+	 * @returns Deletes a object with the same "id"
+	 */
 	const onDeleteUser = async (id) => {
 		if (window.confirm("Are you sure?")) {
 			dispatch(deleteQuote(id))
