@@ -146,7 +146,11 @@ const Home = () => {
 						</div>
 						<div>
 							<div className={style.form_group}>
-								<button>Chirp</button>
+								{cardId ? (
+									<button>Update</button>
+								) : (
+									<button>Chirp</button>
+								)}
 							</div>
 						</div>
 					</div>
