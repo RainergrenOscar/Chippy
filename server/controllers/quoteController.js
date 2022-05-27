@@ -7,18 +7,6 @@ const Quote = require("../models/QuoteModel")
 // @route GET /api/quotes
 // @access private
 const getQuote = asyncHandler(async (req, res) => {
-	//First get the user using jwt > id
-	// const user = await User.findById(req.user.id)
-
-	// if (!user) {
-	// 	res.status(401)
-	// 	throw new Error("User not found")
-	// }
-
-	// const quotes = await Quote.find({ user: req.user.id })
-
-	// res.status(200).json(quotes)
-
 	try {
 		const quote = await Quote.find().sort({ date: -1 })
 
